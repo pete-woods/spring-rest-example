@@ -1,0 +1,38 @@
+version: '3.3'
+
+# This compose file runs the service in a Docker container, and is
+# supposed to represent a more production-like setup.
+
+services:
+  db:
+    environment:
+      MYSQL_ROOT_PASSWORD: '3773Ir5oYOPuIwiJ3yylytG5kvRhOUYQafAVkTNBE'
+      MYSQL_PASSWORD: 'WVn1X9JAZixu7bOCfITFSQyfru4wtRdqztf9PHE3s'
+
+  cache:
+
+  backend:
+    image: surevine/spring-rest-example:latest
+    volumes:
+      - /tmp:/var/lib/data
+    environment:
+      DB_VENDOR: 'mariadb'
+      DB_ADDR: 'db'
+      DB_NAME: 'backend'
+      DB_USER: 'backend'
+      DB_PASSWORD: 'WVn1X9JAZixu7bOCfITFSQyfru4wtRdqztf9PHE3s'
+      DB_DRIVER: 'org.mariadb.jdbc.Driver'
+      SESSION_HOST: 'cache'
+      SESSION_PASSWORD:
+      SESSION_PORT: 6379
+      MEDIA_LOCATION: 'file:/var/lib/data/'
+      # AWS_ACCESS_KEY_ID: 'xxxx'
+      # AWS_SECRET_ACCESS_KEY: 'xxxx'
+      # CLOUDWATCH_METRICS_ENABLED: 'true'
+      # CLOUDWATCH_METRICS_NAMESPACE: 'production-spring-rest-example'
+      # MEDIA_LOCATION: 's3://my-bucket'
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+      - cache

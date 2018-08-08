@@ -1,0 +1,17 @@
+version: '3.3'
+
+# This compose file takes the database and cache services, and exposes
+# them outside the default docker network, so they can be consumed by
+# a locally run instance of the backend.
+
+services:
+  db:
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Uv6DFjqyBbGxGczOaQFCP8FnmOwP98FxNqxRezUZ5'
+      MYSQL_PASSWORD: 'XfeCEtSOFL91QpeyDxQnkRattHWzufTdDB1Pn5iB4'
+    ports:
+      - '3306:3306'
+
+  cache:
+    ports:
+      - '6379:6379'

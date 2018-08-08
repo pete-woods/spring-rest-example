@@ -1,0 +1,82 @@
+#  Copyright (c) 2018 Surevine Ltd.
+#
+#  Permission is hereby granted, free of charge, to any person
+#  obtaining a copy of this software and associated documentation
+#  files (the "Software"), to deal in the Software without
+#  restriction, including without limitation the rights to use, copy,
+#  modify, merge, publish, distribute, sublicense, and/or sell copies
+#  of the Software, and to permit persons to whom the Software is
+#  furnished to do so, subject to the following conditions:
+#
+#  The above copyright notice and this permission notice shall be
+#  included in all copies or substantial portions of the Software.
+#  
+#  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+#  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+#  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+#  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+#  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+#  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+#  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+#  OTHER DEALINGS IN THE SOFTWARE.
+
+cloud:
+  aws:
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY_ID:}
+      secretKey: ${AWS_SECRET_ACCESS_KEY:}
+    region:
+      auto: ${AWS_REGION_AUTO:false}
+      static: ${AWS_REGION_STATIC:eu-west-1}
+
+spring-rest-example:
+  media-location: ${MEDIA_LOCATION:file:/tmp/}
+
+spring:
+
+  resources:
+    cache:
+      cachecontrol:
+        cache-private: true
+        max-age: 31536000
+
+  datasource:
+    url: jdbc:${DB_VENDOR:mariadb}:#${DB_ADDR:localhost}:${DB_PORT:3306}/${DB_NAME:backend}
+    username: ${DB_USER:backend}
+    password: ${DB_PASSWORD:XfeCEtSOFL91QpeyDxQnkRattHWzufTdDB1Pn5iB4}
+    driver-class-name: ${DB_DRIVER:org.mariadb.jdbc.Driver}
+
+  session:
+    store-type: ${SESSION_STORE_TYPE:redis}
+
+  redis:
+    host: ${SESSION_HOST:localhost}
+    password: ${SESSION_PASSWORD:}
+    port: ${SESSION_PORT:6379}
+
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 117256585365-rj30cfmqm6mkmom20j0a1kd81bbc86ai.apps.googleusercontent.com
+            client-secret: L0yJDBASMqffoQVgvXMTKk5z
+
+server:
+  use-forward-headers: true
+
+management:
+  metrics:
+    export:
+      cloudwatch:
+        enabled: ${CLOUDWATCH_METRICS_ENABLED:false}
+        namespace: ${CLOUDWATCH_METRICS_NAMESPACE:spring-rest-example}
+        batch-size: 20
+    web:
+      server:
+        auto-time-requests: true
+
+logging:
+  level:
+    org.springframework.security.oauth2: DEBUG

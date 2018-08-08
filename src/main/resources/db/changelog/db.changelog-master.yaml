@@ -1,0 +1,449 @@
+databaseChangeLog:
+
+- changeSet:
+    id: 1
+    author: petew (initial empty)
+
+- changeSet:
+    id: 1533727754584-1
+    author: petew (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: id
+            type: BINARY(16)
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: datetime
+        - column:
+            constraints:
+              nullable: false
+            name: updated_at
+            type: datetime
+        - column:
+            name: version
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: abv
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: description
+            type: TEXT
+        - column:
+            constraints:
+              nullable: false
+            name: ibu
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: created_by_id
+            type: BINARY(16)
+        - column:
+            name: updated_by_id
+            type: BINARY(16)
+        - column:
+            constraints:
+              nullable: false
+            name: brewery_id
+            type: BINARY(16)
+        - column:
+            constraints:
+              nullable: false
+            name: thumbnail_id
+            type: BINARY(16)
+        tableName: beer
+- changeSet:
+    id: 1533727754584-2
+    author: petew (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: beer_id
+            type: BINARY(16)
+        - column:
+            constraints:
+              nullable: false
+            name: media_id
+            type: BINARY(16)
+        tableName: beer_images
+- changeSet:
+    id: 1533727754584-3
+    author: petew (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: beer_id
+            type: BINARY(16)
+        - column:
+            name: perfect_for
+            type: VARCHAR(255)
+        tableName: beer_perfect_for
+- changeSet:
+    id: 1533727754584-4
+    author: petew (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: id
+            type: BINARY(16)
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: datetime
+        - column:
+            constraints:
+              nullable: false
+            name: updated_at
+            type: datetime
+        - column:
+            name: version
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: description
+            type: TEXT
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: created_by_id
+            type: BINARY(16)
+        - column:
+            name: updated_by_id
+            type: BINARY(16)
+        - column:
+            constraints:
+              nullable: false
+            name: thumbnail_id
+            type: BINARY(16)
+        tableName: brewery
+- changeSet:
+    id: 1533727754584-5
+    author: petew (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: brewery_id
+            type: BINARY(16)
+        - column:
+            constraints:
+              nullable: false
+            name: media_id
+            type: BINARY(16)
+        tableName: brewery_images
+- changeSet:
+    id: 1533727754584-6
+    author: petew (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: id
+            type: BINARY(16)
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: datetime
+        - column:
+            constraints:
+              nullable: false
+            name: updated_at
+            type: datetime
+        - column:
+            name: version
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: alt
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: mime_type
+            type: VARCHAR(255)
+        - column:
+            name: original_name
+            type: VARCHAR(512)
+        - column:
+            name: sort_hint
+            type: BIGINT
+        - column:
+            name: created_by_id
+            type: BINARY(16)
+        - column:
+            name: updated_by_id
+            type: BINARY(16)
+        tableName: media
+- changeSet:
+    id: 1533727754584-7
+    author: petew (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: id
+            type: BINARY(16)
+        - column:
+            constraints:
+              nullable: false
+            name: principal_id
+            type: VARCHAR(255)
+        tableName: user
+- changeSet:
+    id: 1533727754584-8
+    author: petew (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: beer_id, media_id
+        tableName: beer_images
+- changeSet:
+    id: 1533727754584-9
+    author: petew (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: brewery_id, media_id
+        tableName: brewery_images
+- changeSet:
+    id: 1533727754584-10
+    author: petew (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: beerPK
+        tableName: beer
+- changeSet:
+    id: 1533727754584-11
+    author: petew (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: breweryPK
+        tableName: brewery
+- changeSet:
+    id: 1533727754584-12
+    author: petew (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: mediaPK
+        tableName: media
+- changeSet:
+    id: 1533727754584-13
+    author: petew (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: userPK
+        tableName: user
+- changeSet:
+    id: 1533727754584-14
+    author: petew (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: principal_id
+        constraintName: UC_USERPRINCIPAL_ID_COL
+        tableName: user
+- changeSet:
+    id: 1533727754584-15
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: created_by_id
+        baseTableName: beer
+        constraintName: FK12ps4sb5ttp1qs77i09nygv7e
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: user
+- changeSet:
+    id: 1533727754584-16
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: created_by_id
+        baseTableName: media
+        constraintName: FK371ygq80cxteb05t5yetg210d
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: user
+- changeSet:
+    id: 1533727754584-17
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: created_by_id
+        baseTableName: brewery
+        constraintName: FK5aobssbfg6flem0i31j5j223q
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: user
+- changeSet:
+    id: 1533727754584-18
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: brewery_id
+        baseTableName: beer
+        constraintName: FK5p78eficyvoadx99wd9owh0kf
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: brewery
+- changeSet:
+    id: 1533727754584-19
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: beer_id
+        baseTableName: beer_images
+        constraintName: FK5pa9fin7p7kivooh6c98uml6m
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: beer
+- changeSet:
+    id: 1533727754584-20
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: brewery_id
+        baseTableName: brewery_images
+        constraintName: FK73xj03n9vliyscssv9oki595a
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: brewery
+- changeSet:
+    id: 1533727754584-21
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: updated_by_id
+        baseTableName: beer
+        constraintName: FK8nie10lilsqq1gsmpgog9dvve
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: user
+- changeSet:
+    id: 1533727754584-22
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: updated_by_id
+        baseTableName: brewery
+        constraintName: FKfk9x37pcbresadxmp2oqej8h6
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: user
+- changeSet:
+    id: 1533727754584-23
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: thumbnail_id
+        baseTableName: beer
+        constraintName: FKj4o38earmco9c1hf4x7gc8quh
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: media
+- changeSet:
+    id: 1533727754584-24
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: media_id
+        baseTableName: beer_images
+        constraintName: FKjxogdn8g10h5seye3v7e29dt0
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: media
+- changeSet:
+    id: 1533727754584-25
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: thumbnail_id
+        baseTableName: brewery
+        constraintName: FKnjc21x1ranto9gn42hwyovqb0
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: media
+- changeSet:
+    id: 1533727754584-26
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: beer_id
+        baseTableName: beer_perfect_for
+        constraintName: FKo8r4tl6e6piesov0e80k3t86c
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: beer
+- changeSet:
+    id: 1533727754584-27
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: media_id
+        baseTableName: brewery_images
+        constraintName: FKpud7g40n4k645sihj9wjh9dyi
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: media
+- changeSet:
+    id: 1533727754584-28
+    author: petew (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: updated_by_id
+        baseTableName: media
+        constraintName: FKt0dggehopauh8c3b070utmbra
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: user
+
