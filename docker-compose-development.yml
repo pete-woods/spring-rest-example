@@ -26,8 +26,14 @@ version: '3.3'
 # them outside the default docker network, so they can be consumed by
 # a locally run instance of the backend.
 
+volumes:
+  db-data-development:
+    driver: local
+
 services:
   db:
+    volumes:
+      - db-data-development:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 'Uv6DFjqyBbGxGczOaQFCP8FnmOwP98FxNqxRezUZ5'
       MYSQL_PASSWORD: 'XfeCEtSOFL91QpeyDxQnkRattHWzufTdDB1Pn5iB4'

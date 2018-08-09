@@ -41,7 +41,7 @@ spring:
         max-age: 31536000
 
   datasource:
-    url: jdbc:${DB_VENDOR:mariadb}:#${DB_ADDR:localhost}:${DB_PORT:3306}/${DB_NAME:backend}
+    url: jdbc:${DB_VENDOR:mariadb}://${DB_ADDR:localhost}:${DB_PORT:3306}/${DB_NAME:backend}
     username: ${DB_USER:backend}
     password: ${DB_PASSWORD:XfeCEtSOFL91QpeyDxQnkRattHWzufTdDB1Pn5iB4}
     driver-class-name: ${DB_DRIVER:org.mariadb.jdbc.Driver}

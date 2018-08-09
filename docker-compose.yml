@@ -22,15 +22,9 @@
 
 version: '3.3'
 
-volumes:
-  db-data:
-    driver: local
-
 services:
   db:
     image: mariadb
-    volumes:
-      - db-data:/var/lib/mysql
     environment:
       MYSQL_DATABASE: 'backend'
       MYSQL_USER: 'backend'

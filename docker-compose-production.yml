@@ -28,9 +28,13 @@ version: '3.3'
 volumes:
   backend-data:
     driver: local
+  db-data-production:
+    driver: local
 
 services:
   db:
+    volumes:
+      - db-data-production:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: '3773Ir5oYOPuIwiJ3yylytG5kvRhOUYQafAVkTNBE'
       MYSQL_PASSWORD: 'WVn1X9JAZixu7bOCfITFSQyfru4wtRdqztf9PHE3s'
