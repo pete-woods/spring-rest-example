@@ -25,6 +25,10 @@ version: '3.3'
 # This compose file runs the service in a Docker container, and is
 # supposed to represent a more production-like setup.
 
+volumes:
+  backend-data:
+    driver: local
+
 services:
   db:
     environment:
@@ -36,7 +40,7 @@ services:
   backend:
     image: surevine/spring-rest-example:latest
     volumes:
-      - /tmp:/var/lib/data
+      - backend-data:/var/lib/data
     environment:
       DB_VENDOR: 'mariadb'
       DB_ADDR: 'db'
