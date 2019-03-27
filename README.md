@@ -10,7 +10,7 @@
 ### Under development
 
 ```
-docker-compose -f docker-compose.yml -f docker-compose-development.yml up
+docker stack deploy --prune -c docker-compose.yml -c docker-compose-development.yml spring-rest-example
 ```
 
 Then run the spring boot app through your IDE, or with the command:
@@ -21,12 +21,12 @@ Then run the spring boot app through your IDE, or with the command:
 ## Packaging
 To build the Docker image:
 ```
-./mvnw package
+docker build -t surevine/spring-rest-example .
 ```
 
-Then it can be deployed as follows:
+Then it can be deployed as follows (the brackets use a BASH sub-shell):
 ```
-docker-compose -f docker-compose.yml -f docker-compose-production.yml up
+(. production.env && docker stack deploy --prune -c docker-compose.yml -c docker-compose-production.yml spring-rest-example)
 ```
 
 ## Licensing

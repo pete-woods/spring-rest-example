@@ -20,7 +20,7 @@
 #  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 #  OTHER DEALINGS IN THE SOFTWARE.
 
-version: '3.3'
+version: '3.6'
 
 # This compose file runs the service in a Docker container, and is
 # supposed to represent a more production-like setup.
@@ -36,13 +36,13 @@ services:
     volumes:
       - db-data-production:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: '3773Ir5oYOPuIwiJ3yylytG5kvRhOUYQafAVkTNBE'
-      MYSQL_PASSWORD: 'WVn1X9JAZixu7bOCfITFSQyfru4wtRdqztf9PHE3s'
-
-  cache:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
 
   backend:
     image: surevine/spring-rest-example:latest
+    deploy:
+      replicas: 2
     volumes:
       - backend-data:/var/lib/data
     environment:
@@ -50,19 +50,18 @@ services:
       DB_ADDR: 'db'
       DB_NAME: 'backend'
       DB_USER: 'backend'
-      DB_PASSWORD: 'WVn1X9JAZixu7bOCfITFSQyfru4wtRdqztf9PHE3s'
+      DB_PASSWORD: "${MYSQL_PASSWORD}"
       DB_DRIVER: 'org.mariadb.jdbc.Driver'
       SESSION_HOST: 'cache'
       SESSION_PASSWORD:
       SESSION_PORT: 6379
       MEDIA_LOCATION: 'file:/var/lib/data/'
-      # AWS_ACCESS_KEY_ID: 'xxxx'
-      # AWS_SECRET_ACCESS_KEY: 'xxxx'
+      GOOGLE_CLIENT_ID: "${GOOGLE_CLIENT_ID}"
+      GOOGLE_CLIENT_SECRET: "${GOOGLE_CLIENT_SECRET}"
+      # AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      # AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
       # CLOUDWATCH_METRICS_ENABLED: 'true'
       # CLOUDWATCH_METRICS_NAMESPACE: 'production-spring-rest-example'
       # MEDIA_LOCATION: 's3://my-bucket'
     ports:
       - '8080:8080'
-    depends_on:
-      - db
-      - cache
