@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- JDK 8+
+- JDK 11+
 - Docker
 
 ## Building

@@ -29,6 +29,15 @@ cloud:
       auto: ${AWS_REGION_AUTO:false}
       static: ${AWS_REGION_STATIC:eu-west-1}
 
+    config:
+      discovery:
+        enabled: false
+      enabled: false
+    discovery:
+      enabled: false
+    stack:
+      auto: false
+
 spring-rest-example:
   media-location: ${MEDIA_LOCATION:file:/tmp/}
 
@@ -60,8 +69,8 @@ spring:
       client:
         registration:
           google:
-            client-id: 117256585365-rj30cfmqm6mkmom20j0a1kd81bbc86ai.apps.googleusercontent.com
-            client-secret: L0yJDBASMqffoQVgvXMTKk5z
+            client-id: ${GOOGLE_CLIENT_ID:-117256585365-rj30cfmqm6mkmom20j0a1kd81bbc86ai.apps.googleusercontent.com}
+            client-secret: ${GOOGLE_CLIENT_SECRET:-L0yJDBASMqffoQVgvXMTKk5z}
 
 server:
   use-forward-headers: true
@@ -76,6 +85,10 @@ management:
     web:
       server:
         auto-time-requests: true
+
+  endpoint:
+    health:
+      show-details: "ALWAYS"
 
 logging:
   level:
