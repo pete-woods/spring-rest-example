@@ -40,7 +40,7 @@ services:
       MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
 
   backend:
-    image: surevine/spring-rest-example:latest
+    image: petewoods/spring-rest-example:latest
     deploy:
       replicas: 2
     volumes:
