@@ -1,7 +1,9 @@
 # Spring Boot REST example
 
-A simple REST API implemented using Spring Boot on-top of Redis and MariaDB, using Google OIDC for
-authentication.
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/petewoods/spring-rest-example.svg)
+
+A simple REST API implemented using a stateless Spring Boot app on-top of Redis and MariaDB,
+using Google OIDC for authentication.
 
 ## Requirements
 
